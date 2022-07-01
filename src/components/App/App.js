@@ -1,5 +1,8 @@
-import CurrencyInput from "./Currecy-exchange/Currency-exchange";
+import CurrencyInput from "../Currecy-exchange/Currency-exchange";
+import Header from "../Header/Header";
 import { useState, useEffect } from "react";
+import fetchAPI from "../fetch-api";
+import s from "./App.module.css";
 
 function App() {
   const [amount1, setAmount1] = useState(1);
@@ -9,61 +12,50 @@ function App() {
   const [rate, setRate] = useState([]);
 
   useEffect(() => {
-    const myHeaders = new Headers();
-    myHeaders.append("apikey", "XQ9IaZMBajBwQ7aP2igUdQV9LwFkisjy");
-
-    const requestOptions = {
-      method: "GET",
-      redirect: "follow",
-      headers: myHeaders,
-    };
-
-    fetch(
-      "https://api.apilayer.com/exchangerates_data/latest?symbols=UAH,GBP,EUR,USD&base=UAH",
-      requestOptions
-    )
+    fetchAPI()
       .then((response) => response.text())
       .then((result) => {
         const ratesParset = JSON.parse(result);
-        console.log(ratesParset);
         setRate(ratesParset.rates);
       })
       .catch((error) => console.log("error", error));
   }, []);
 
   useEffect(() => {
- if(!!rate) {
-  handleAmount1Change(amount1)
- }
+    if (!!rate) {
+      handleAmount1Change(amount1);
+    }
   }, [rate]);
 
-
   function formatNumber(number) {
-    return number.toFixed(2)
-  };
+    return number.toFixed(2);
+  }
 
   function handleAmount1Change(amount1) {
-    setAmount2(formatNumber(amount1 * rate[currency2] / rate[currency1]));
+    setAmount2(formatNumber((amount1 * rate[currency2]) / rate[currency1]));
     setAmount1(amount1);
-  };
+  }
 
   function handleCurrency1Change(currency1) {
-    setAmount2(formatNumber(amount1 * rate[currency2] / rate[currency1]));
+    setAmount2(formatNumber((amount1 * rate[currency2]) / rate[currency1]));
     setCurrensy1(currency1);
-  };
+  }
 
   function handleAmount2Change(amount2) {
-    setAmount1(formatNumber(amount2 * rate[currency1] / rate[currency2]));
+    setAmount1(formatNumber((amount2 * rate[currency1]) / rate[currency2]));
     setAmount2(amount2);
-  };
+  }
 
   function handleCurrency2Change(currency2) {
-    setAmount1(formatNumber(amount2 * rate[currency1] / rate[currency2]));
+    setAmount1(formatNumber((amount2 * rate[currency1]) / rate[currency2]));
     setCurrensy2(currency2);
-  };
+  }
 
   return (
-    <div>
+    <div className={s.container}>
+      <Header />
+      <section className={s.exchange}>
+      <h2 className={s.exchngeName}>Средний коммерческий курс в пунктах обмена Украины</h2>
       <CurrencyInput
         onAmaontChange={handleAmount1Change}
         onCurrencyChange={handleCurrency1Change}
@@ -78,6 +70,7 @@ function App() {
         amount={amount2}
         currency={currency2}
       />
+      </section>
     </div>
   );
 }

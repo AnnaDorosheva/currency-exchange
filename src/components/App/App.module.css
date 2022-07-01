@@ -1,0 +1,24 @@
+.container::before {
+  content: "";
+  background-image: url("../images/bsckground.jpg");
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+.exchngeName {
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  color: rgb(67, 64, 64);
+  text-shadow: 2px 2px 0 #c6d1ee, 4px 4px 0 #5f6066;
+  margin-bottom: 40px;
+}
+.exchange{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
