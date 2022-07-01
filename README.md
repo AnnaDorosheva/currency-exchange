@@ -1,3 +1,20 @@
+Currency exchange APP.
+
+Link (живая ссылка на результат): https://annadorosheva.github.io/currency-exchange/
+
+Currency exchange page, where in the upper part you can see the current buying and selling rate of the dollar and the euro in PRIVATBANK.
+In the lower part, you can calculate the cost of the exchange, according to the average commercial rate.
+Information about commercial exchange rates is pulled from "https://api.apilayer.com/exchangerates_data/latest?symbols=UAH,GBP,EUR,USD&base=UAH" and may differ from the rate of PRIVATBANK.
+When you hover the mouse over the top of the pieces and the cost of currencies, the hover is triggered and the page comes to life.
+Adaptability to mobile screens has not yet been written, but the site adapts well when compressed to 420 pixels, thanks to the use of flex-box.
+
+
+Страничка обмена валют, на которой в верхней части можно увидеть актуальный на сегодня курс покупки и продажи доллара и евро, по отношению к грине в ПРИВАТБАНКЕ. В нижней части можно расчитать стоимость обмена, согласно среднему коммерческуму курсу. Информация о курсах коммерческого обмена подтягивается с "https://api.apilayer.com/exchangerates_data/latest?symbols=UAH,GBP,EUR,USD&base=UAH" и может отличаться от курса ПРИВАТБАНКА.
+При наведении мыши на верхнюю часть кусов и стоимость валют, срабатывает ховер и страница оживает.
+Адаптивность к мобильным экранам пока не писала, но сайт хорошо адаптируется при сжатии до 420 рикселей, благодяря использованию flex-box.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
