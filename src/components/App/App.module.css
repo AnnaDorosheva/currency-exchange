@@ -15,7 +15,7 @@
   font-size: 32px;
   color: rgb(67, 64, 64);
   text-shadow: 2px 2px 0 #c6d1ee, 4px 4px 0 #5f6066;
-  margin-bottom: 40px;
+  margin: 0 6px 6px 40px;
 }
 .exchange{
     display: flex;
